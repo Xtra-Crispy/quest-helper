@@ -81,10 +81,10 @@ public class TheHeartOfDarkness extends BasicQuestHelper
     VarbitRequirement[] activateStatueRequirements = new VarbitRequirement[4];
 
     // Required
-    ItemRequirement combatGear, food, coins;
+    ItemRequirement coins;
 
     // Recommended
-    ItemRequirement quetzalFeed, limestoneBrick, softClay, pickaxe, civitasIllaFortisTeleport, prayerPotions, staminaPotions;
+    ItemRequirement combatGear, food, quetzalFeed, limestoneBrick, softClay, pickaxe, civitasIllaFortisTeleport, prayerPotions, staminaPotions;
 
     // Quest items
     ItemRequirement towerKey, book, poem, scrapOfPaper1, scrapOfPaper2, scrapOfPaper3, completedNote, emissaryHood, emissaryTop, emissaryBottom,
@@ -364,12 +364,12 @@ public class TheHeartOfDarkness extends BasicQuestHelper
     protected void setupRequirements()
     {
         // Required items
-        combatGear = new ItemRequirement("Combat gear", -1, -1).isNotConsumed();
-        combatGear.setDisplayItemId(BankSlotIcons.getCombatGear());
-        food = new ItemRequirement("Food", ItemCollections.GOOD_EATING_FOOD, 10);
         coins = new ItemRequirement("Coins", ItemCollections.COINS);
 
         // Recommended items
+		combatGear = new ItemRequirement("Combat gear", -1, -1).isNotConsumed();
+		combatGear.setDisplayItemId(BankSlotIcons.getCombatGear());
+		food = new ItemRequirement("Food", ItemCollections.GOOD_EATING_FOOD, 10);
         quetzalFeed = new ItemRequirement("Quetzal feed", ItemID.QUETZAL_FEED_29307);
         quetzalFeed.setTooltip("Optional for the Salvager Overlook landing site");
         limestoneBrick = new ItemRequirement("Limestone brick", ItemID.LIMESTONE_BRICK);
@@ -1074,13 +1074,13 @@ public class TheHeartOfDarkness extends BasicQuestHelper
     @Override
     public List<ItemRequirement> getItemRequirements()
     {
-        return List.of(coins.quantity(30), combatGear, food, prayerPotions.quantity(2));
+        return List.of(coins.quantity(30));
     }
 
     @Override
     public List<ItemRequirement> getItemRecommended()
     {
-        return List.of(quetzalFeed.quantity(10), limestoneBrick.quantity(3), softClay.quantity(4), staminaPotions, civitasIllaFortisTeleport);
+        return List.of(combatGear, food, quetzalFeed.quantity(10), limestoneBrick.quantity(3), softClay.quantity(4), prayerPotions.quantity(2), staminaPotions, civitasIllaFortisTeleport);
     }
 
     @Override
